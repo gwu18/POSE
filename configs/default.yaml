@@ -1,0 +1,73 @@
+# P.O.S.E. — default TCN training config
+
+# Multi-label: one independent sigmoid output per entry. Several can be on at once.
+# "good posture" = every fault output off (written as the tag `good` in label CSVs).
+classes: [forward_head, rounded_shoulders, slouched, perched_edge, transient]
+good_tag: good
+# Gate output: while transient (drinking, reaching, adjusting) is on, fault alerts pause.
+# On transient frames the fault targets are unknown and masked out of the loss.
+gate_class: transient
+# Fault -> haptic zone (one buzzer each).
+alert_zones:
+  forward_head: neck
+  rounded_shoulders: shoulders
+  slouched: lower_back
+  perched_edge: seat
+
+paths:
+  raw_dir: data/raw
+  landmarks_dir: data/landmarks
+  labels_dir: data/labels
+  splits: data/splits.json
+  runs_dir: runs
+  pose_model: models/pose_landmarker_full.task
+
+data:
+  fps: 15                # landmarks are extracted at this rate
+  window: 45             # frames per window (3 s)
+  stride: 5              # training window stride (frames)
+  label_tail: 15         # window target = per-output majority over the last N frames (1 s)
+  tail_purity: 0.8       # min fraction of tail frames that are labeled AND agree, else that output is masked
+  min_detected: 0.6      # drop windows where pose was detected in < 60% of frames
+
+augment:
+  enabled: true
+  rotate_deg: 10         # camera roll
+  x_squash: [0.75, 1.1]  # foreshortening (camera not perfectly side-on)
+  noise_std: 0.01        # landmark noise, in torso-length units
+  time_stretch: [0.8, 1.2]
+  vis_drop_prob: 0.05    # randomly mark frames as undetected
+
+model:
+  type: tcn              # tcn | frame_mlp (single-frame baseline)
+  channels: 64
+  levels: 4              # dilations 1,2,4,8
+  kernel_size: 3
+  dropout: 0.2
+
+train:
+  seed: 42
+  batch_size: 128
+  epochs: 60
+  lr: 0.002
+  weight_decay: 0.0001
+  pos_weight: true       # BCE positive weight = neg/pos per output (clipped)
+  pos_weight_max: 10
+  patience: 12           # early stop on val mean F1 over the fault outputs
+  num_workers: 0
+
+alerts:
+  prob_threshold: 0.6    # fault prob needed (override per fault below)
+  per_class_threshold: {}   # e.g. {rounded_shoulders: 0.7}; tune on val
+  gate_threshold: 0.5    # transient prob that pauses alerts
+  persist_s: 5.0         # must hold this long before buzzing
+  cooldown_s: 20.0       # min time between alerts for the same fault
+
+qa:                      # sanity rules for qa_labels.py (segment medians; degrees / torso lengths)
+  good_max_rel_neck: 25          # neck angle minus trunk angle
+  good_max_abs_trunk: 20
+  forward_head_min_rel_neck: 20
+  rounded_shoulders_min_line: 0.03
+  slouched_max_torso_ratio: 0.97 # torso visibly shorter than this person's typical length...
+  slouched_max_trunk: -5         # ...or trunk reclined behind vertical
+  perched_edge_min_thigh: 8      # knee clearly lower than hip

@@ -1,0 +1,9 @@
+# Synthetic stick-figure data for smoke-testing the pipeline (scripts/make_synthetic.py).
+base: default.yaml
+paths:
+  landmarks_dir: data/synthetic/landmarks
+  labels_dir: data/synthetic/labels
+  splits: data/synthetic/splits.json
+  runs_dir: runs/synthetic
+train:
+  epochs: 15

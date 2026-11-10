@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+# raw video never goes in git (privacy); landmarks + labels are fine to share
+data/raw/
+data/synthetic/
+data/protocols/*.wav
+models/*.task
+runs/
