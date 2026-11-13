@@ -1,0 +1,12 @@
+    0.0s  sync beep at 4.0s (clap)
+    5.4s  [good                                    ]  75s  Sit all the way back in the chair. Back supported, shoulders relaxed, ears over your shoulders. Hold it.
+   80.4s  [forward_head+rounded_shoulders+slouched ]  60s  Full slump. Hips forward, back rounded, shoulders in, head toward your phone.
+  140.4s  [rounded_shoulders                       ]  60s  Keep your head level, and let your shoulders roll forward and inward, like hugging yourself.
+  200.4s  [forward_head+perched_edge               ]  60s  Perch on the front edge of the seat and push your head toward the laptop.
+  260.4s  [forward_head                            ]  60s  Keep your back against the chair, but push your head and chin forward toward the screen.
+  320.4s  [forward_head+rounded_shoulders          ]  60s  Head forward and shoulders rolled in, like leaning in to read the screen.
+  380.4s  [transient                               ]  60s  Move around naturally. Take a drink, reach for something, adjust your seat. Keep moving.
+  440.4s  [good                                    ]  45s  Sit all the way back in the chair. Back supported, shoulders relaxed, ears over your shoulders. Hold it.
+  485.4s  [perched_edge                            ]  60s  Scoot to the front edge of the seat. No back support. Sit there, feet tucked under you.
+  545.4s  [slouched                                ]  60s  Slide your hips forward and let your lower back round off the chair. Slump down.
+  605.4s  [free                                    ]  75s  Now just sit and work naturally, however you like.
