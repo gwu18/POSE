@@ -1,0 +1,11 @@
+start_s,end_s,label
+14.617,79.936,good
+88.497,139.936,forward_head+rounded_shoulders+slouched
+149.617,184.936,good
+193.650,244.936,rounded_shoulders
+253.070,304.936,slouched
+313.582,364.936,perched_edge
+374.086,424.936,transient
+432.543,484.936,forward_head+rounded_shoulders
+492.095,544.936,forward_head+perched_edge
+553.219,604.936,forward_head
