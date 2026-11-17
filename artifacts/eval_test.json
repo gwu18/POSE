@@ -1,0 +1,66 @@
+{
+  "overall": {
+    "mean_fault_f1": 0.3431970563322889,
+    "good": {
+      "precision": 0.2263575350823673,
+      "recall": 0.24849296718017413,
+      "f1": 0.23690932311621965,
+      "support": 2986
+    },
+    "exact_match": 0.12417302798982188,
+    "per_class": {
+      "forward_head": {
+        "precision": 0.6895674300254453,
+        "recall": 0.04382276843467012,
+        "f1": 0.08240839288429375,
+        "auroc": 0.6298991154543372,
+        "positives": 6184,
+        "known": 13755
+      },
+      "rounded_shoulders": {
+        "precision": 0.3400156617071261,
+        "recall": 0.4715464813205908,
+        "f1": 0.39512239512239516,
+        "auroc": 0.5269554841110167,
+        "positives": 4604,
+        "known": 13755
+      },
+      "slouched": {
+        "precision": 0.4278008938203113,
+        "recall": 0.9057096247960849,
+        "f1": 0.5811178563952272,
+        "auroc": 0.874622804621416,
+        "positives": 3065,
+        "known": 13755
+      },
+      "perched_edge": {
+        "precision": 0.3206466823846413,
+        "recall": 0.3078913324708926,
+        "f1": 0.3141395809272397,
+        "auroc": 0.6306128456915797,
+        "positives": 3092,
+        "known": 13755
+      },
+      "transient": {
+        "precision": 0.32155844155844154,
+        "recall": 0.4104774535809019,
+        "f1": 0.36061753568307603,
+        "auroc": 0.7378748697121953,
+        "positives": 1508,
+        "known": 15263
+      }
+    }
+  },
+  "per_participant_mean_fault_f1": {
+    "p03": 0.3431970563322889
+  },
+  "alerts": {
+    "alerts": 24.0,
+    "false_alerts": 8.0,
+    "labeled_minutes": 17.129492288814237,
+    "missed_segments": 17.0,
+    "false_alerts_per_10min": 4.670307715555642,
+    "median_latency_s": 10.862112845218277,
+    "detected_segments": 5
+  }
+}
